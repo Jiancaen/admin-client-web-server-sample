@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <title>CSGO Matches</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+    <body class="body2">
+        <nav id="navbar">
+            <img src="https://img.icons8.com/color/96/000000/greek-helmet.png"/>
+            <h1 id="chug"> CHUG </h1>
+            <h1 id="sports"> SPORTS </h1>
+            <ul>
+                <li><a href="about.html"> About Us </a></li><!--
+                --><li class="two"><a href="csgo.html"> CS:GO </a></li><!--
+                --><li><a href="index.html"> Dota 2 </a></li>
+            </ul>
+        </nav>
+
+        <div class="dropdown">
+            <div class="dropbtn">
+                <img src="https://img.icons8.com/android/24/000000/menu.png"/>
+            </div>
+            <div class="dropdown-content">
+                <a id="choiceA" href="index.html"> Dota 2 </a>
+                <a id="choiceB" href="csgo.html"> CS:GO </a>
+                <a id="choiceC" href="about.html"> About Us </a>
+            </div>
+        </div>
+
+        <h1 id="title2"> Recent - Matches </h1>
+
+        <div class="search2">
+            <input type="text" id="myInput" placeholder="Search..." onkeyup="myFunction()">
+        </div>
+
+        <div class="matches">
+            <table class="matchesTable">
+                <thead>
+                    <tr>
+						<th>Name</th>
+                        <th>Competition Id</th>
+                        <th>Competition Name</th>
+						<th>Round Id</th>
+						<th>Round Name</th>
+						<th>Date Begins</th>
+						<th>Date Ends</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableData2"></tbody>
+
+            </table>
+        </div>
+
+        <img id="slideup" src="slideup.png"/>
+
+        <script src ="csgo-script.js" async></script>
+
+        <script>
+            $(document).ready(function() {
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#tableData2 tr").filter(function() {
+                        $(this).toggle($(this).text()
+                        .toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+
+        <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                if($(window).scrollTop() > 300){
+                    $('#slideup').css({
+                        "opacity":"1", "pointer-events":"auto"
+                    });
+                }else{
+                    $('#slideup').css({
+                        "opacity":"0", "pointer-events":"none"
+                    });
+                }
+            });
+            $('#slideup').click(function(){
+                $('html').animate({scrollTop:0}, 100);
+                });
+            });
+        </script>
+
+    </body>
+</html>
